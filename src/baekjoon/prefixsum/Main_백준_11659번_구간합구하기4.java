@@ -13,8 +13,8 @@ public class Main_백준_11659번_구간합구하기4 {
         int n = Integer.parseInt(st.nextToken());
         int m = Integer.parseInt(st.nextToken());
 
-        int[] arr = new int[n+1];
-        int[]sum = new int[n+1];
+        long[] arr = new long[n+1];
+        long[]sum = new long[n+1];
         st = new StringTokenizer(bf.readLine());
         for(int i=1; i<=n; i++){
             arr[i] = Integer.parseInt(st.nextToken());
