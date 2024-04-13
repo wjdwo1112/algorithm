@@ -7,7 +7,10 @@ public class Main {
         for(int i=0;i<5;i++){
             int a=s.nextInt();
             if(n==a) count++;
+
         }
-        System.out.print(count);
+        System.out.print(count); 
+
+
     }
 }
