@@ -18,6 +18,7 @@ public class Main {
             System.out.println("Special");
         } else {
             System.out.println("After");
+
         }
     }
 }
