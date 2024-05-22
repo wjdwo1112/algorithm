@@ -19,5 +19,6 @@ public class Main {
         int result = Math.min(min1,min2);
 
         System.out.println(result);
+
     }
 }
