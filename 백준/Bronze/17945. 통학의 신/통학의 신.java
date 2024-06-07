@@ -17,6 +17,8 @@ public class Main {
             if(i*i + 2*a*i + b == 0){
                 System.out.print(i);
                 System.out.print(" ");
+
+
             }
         }
     }
