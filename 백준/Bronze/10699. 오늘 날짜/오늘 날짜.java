@@ -9,5 +9,7 @@ public class Main {
 		DateFormat df = new SimpleDateFormat("YYYY-MM-dd");
 		df.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
 		System.out.println(df.format(date));
+
+
 	}
 }
