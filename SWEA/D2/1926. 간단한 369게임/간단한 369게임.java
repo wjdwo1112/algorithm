@@ -1,29 +1,28 @@
-import java.util.*;
-import java.lang.*;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
-// The main method must be in a class named "Main".
-class Solution {
-    public static void main(String[] args) throws IOException{
+public class Solution {
+    public static void main(String[] args) throws IOException {
+
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-        int N = Integer.parseInt(bf.readLine());
+        int n = Integer.parseInt(bf.readLine());
+        int i = 1;
 
-        for(int i=1; i<=N; i++){
-            String tmp = String.valueOf(i);
-            if(tmp.contains("3") || tmp.contains("6") || tmp.contains("9")){
-                for(int j=0; j<tmp.length(); j++){
-                    if(tmp.charAt(j) == '3' || tmp.charAt(j) == '6' || tmp.charAt(j) == '9'){
-                        System.out.print("-");
-                    }
-                   
-                }
-                System.out.print(" ");
-            }else{
-                System.out.print(i + " ");
-            }
+        while(i <= n){
             
+            String I = String.valueOf(i);
+            if(I.contains("3") || I.contains("6") || I.contains("9")){
+                for(int j=0; j<I.length(); j++){
+                    if(I.charAt(j) == '3' || I.charAt(j) == '6' ||I.charAt(j) == '9'){
+                        System.out.print('-');
+                    }
+                }
+            }else{
+                System.out.print(I);
+            }
+            System.out.print(" ");
+            i++;
         }
-        
-        
     }
 }
