@@ -28,7 +28,8 @@ public class Main {
 
             if(cow[a] == -1){
                 cow[a] = b;
-            }else if (cow[a] != b){
+            }else {
+                if(cow[a] != b)
                 cnt++;
                 cow[a] = b;
             }
