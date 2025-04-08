@@ -11,7 +11,7 @@ public class Main {
         for(int i=0; i<26; i++){
             alphabet[i] = -1;
         }
-
+        //
         for(int i=0; i<S.length(); i++){
             char c = S.charAt(i);
             if(alphabet[c-97] != -1){
