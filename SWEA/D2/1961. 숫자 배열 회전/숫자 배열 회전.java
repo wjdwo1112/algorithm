@@ -1,4 +1,5 @@
 
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,70 +9,73 @@ public class Solution {
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
-        int t = Integer.parseInt(bf.readLine());
-        for(int m=0; m<t; m++){
+        int T = Integer.parseInt(bf.readLine());
+
+        for(int t=1; t<=T; t++){
             int n = Integer.parseInt(bf.readLine());
             int[][] arr = new int[n][n];
-            
-            //배열요소 입력
             for(int i=0; i<n; i++){
                 st = new StringTokenizer(bf.readLine());
                 for(int j=0; j<n; j++){
                     arr[i][j] = Integer.parseInt(st.nextToken());
                 }
+
             }
-            //회전 결과 생성
-            int[][] arr90 = rotate90(arr,n);
-            int[][] arr180 = rotate180(arr,n);
-            int[][] arr270 = rotate270(arr,n);
-            
-            //출력
-            System.out.println("#" + (m+1));
+            int[][] rotated90 = turn90(arr);
+            int[][] rotated180 = turn180(arr);
+            int[][] rotated270 = turn270(arr);
+
+            System.out.println("#" + t);
             for(int i=0; i<n; i++){
-                //각 행의 i번쨰 요소를 출력
-                printRow(arr90[i]);
+
+                for(int j=0; j<n; j++){
+                    System.out.print(rotated90[i][j]);
+
+                }
                 System.out.print(" ");
-                printRow(arr180[i]);
+                for(int j=0; j<n; j++){
+                    System.out.print(rotated180[i][j]);
+                }
                 System.out.print(" ");
-                printRow(arr270[i]);
-                System.out.println(" ");
+
+                for(int j=0; j<n; j++){
+                    System.out.print(rotated270[i][j]);
+                }
+
+                System.out.println();
             }
+
+
         }
     }
-    //90도 회전
-    public static int[][] rotate90(int[][] arr, int n){
-        int[][] result = new int[n][n];
-        for(int i=0; i<n; i++){
-            for(int j=0; j<n; j++){
-                result[i][j] = arr[n-1-j][i];
+    public static int[][] turn90(int[][] arr){
+        int a = arr.length;
+        int [][] New = new int[a][a];
+        for(int i=0; i<a; i++){
+            for(int j=0; j< a; j++){
+                New[j][a-1-i] = arr[i][j];
             }
         }
-        return result;
+        return New;
     }
-    //180도 회전
-    public static int[][] rotate180(int[][] arr, int n){
-        int[][] result = new int[n][n];
-        for(int i=0; i<n; i++){
-            for(int j=0; j<n; j++){
-                result[i][j] = arr[n-1-i][n-1-j];
+    public static int[][] turn180(int[][] arr){
+        int a = arr.length;
+        int [][] New = new int[a][a];
+        for(int i=0; i<a; i++){
+            for(int j=0; j<a; j++){
+                New[a-1-i][a-1-j] = arr[i][j];
             }
         }
-        return result;
+        return New;
     }
-    //270도 회전
-    public static int[][] rotate270(int[][] arr, int n){
-        int[][] result = new int[n][n];
-        for(int i=0; i<n; i++){
-            for(int j=0; j<n; j++){
-                result[i][j] = arr[j][n-1-i];
+    public static int[][] turn270(int[][] arr){
+        int a = arr.length;
+        int [][] New = new int[a][a];
+        for(int i=0; i<a; i++){
+            for(int j=0; j<a; j++){
+                New[a-1-j][i] = arr[i][j];
             }
         }
-        return result;
-    }
-    //행을 출력하는 메서드
-    public static void printRow(int[] row){
-        for(int i=0; i<row.length; i++){
-            System.out.print(row[i]);
-        }
+        return New;
     }
 }
