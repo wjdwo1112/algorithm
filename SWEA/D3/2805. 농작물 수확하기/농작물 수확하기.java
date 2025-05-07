@@ -1,7 +1,8 @@
+
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
 
 public class Solution {
     public static void main(String[] args) throws IOException {
@@ -10,7 +11,6 @@ public class Solution {
         for(int t=1; t<=T; t++){
             int n = Integer.parseInt(bf.readLine());
             int[][] arr = new int[n][n];
-
             for(int i=0; i<n; i++){
                 String line = bf.readLine();
                 for(int j=0; j<n; j++){
@@ -18,17 +18,14 @@ public class Solution {
                 }
             }
             int sum = 0;
-            int mid = n/2;
-
             for(int i=0; i<n; i++){
-                int start = Math.abs(mid - i);//시작 열 인덱스(마름모 범위)
-                int end = n - start;//끝 열 인덱스
+                int start = Math.abs(n/2 - i); //시작열(왼쪽)
+                int end = n - start; //  끝 열 (오른쪽 + 1) 
                 for(int j=start; j<end; j++){
                     sum += arr[i][j];
                 }
             }
             System.out.println("#" + t + " " + sum);
-
         }
     }
 }
