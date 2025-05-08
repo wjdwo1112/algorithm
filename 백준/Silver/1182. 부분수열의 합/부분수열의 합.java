@@ -1,16 +1,16 @@
-import java.util.*;
-import java.lang.*;
-import java.io.*;
 
-// The main method must be in a class named "Main".
-class Main {
-    public static int n;
-    public static int s;
-    public static int[]arr;
-    public static int answer = 0;
-    
-    
-    public static void main(String[] args) throws IOException{
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+
+public class Main {
+    static int n,s;
+    static int[] arr;
+    static int cnt;
+    public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(bf.readLine());
 
@@ -18,28 +18,28 @@ class Main {
         s = Integer.parseInt(st.nextToken());
 
         arr = new int[n];
-
         st = new StringTokenizer(bf.readLine());
         for(int i=0; i<n; i++){
             arr[i] = Integer.parseInt(st.nextToken());
         }
-        recur(0,0);
-        if(s==0){
-            answer--;
-            System.out.println(answer);
-        }else{
-            System.out.println(answer);
-        }
+
+        cnt = 0;
+
+        dfs(0,0,0);
+
+        System.out.println(cnt);
+
     }
 
-    public static void recur(int cur, int sum){
-        if(cur == n){
-            if(sum == s){
-                answer++;
+    private static void dfs(int idx, int sum, int depth) {
+        if(idx == n){
+            if(depth > 0 && sum == s){
+                cnt++;
             }
             return;
         }
-        recur(cur+1 , sum+arr[cur]);
-        recur(cur+1, sum);
+        dfs(idx + 1, sum + arr[idx], depth + 1);
+        dfs(idx + 1, sum, depth);
+
     }
 }
