@@ -1,3 +1,5 @@
+
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,35 +10,41 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
-        int n = Integer.parseInt(bf.readLine());
-        long[] arr = new long[n];
 
+        int n = Integer.parseInt(bf.readLine());
+        int[] arr = new int[n];
         st = new StringTokenizer(bf.readLine());
         for(int i=0; i<n; i++){
-            arr[i] = Long.parseLong(st.nextToken());
+            arr[i] = Integer.parseInt(st.nextToken());
         }
-
         Arrays.sort(arr);
+
         int cnt = 0;
 
         for(int i=0; i<n; i++){
+            int target = arr[i];
             int start = 0;
             int end = n-1;
+            while(start<end){
+                if(start == i){
+                    start++;
+                    // continue로 현재 타겟 인덱스는 건너뛰기
+                    // 자기 자신을 합에 쓰면 안되기 때문
+                    continue;
 
-            while(start < end){
-                if(arr[start] + arr[end] == arr[i]){
-                    if(start != i && end != i){
-                        cnt++;
-                        break;
-                    }else if(start == i){
-                        start++;
-                    }else if(end == i){
-                        end--;
-                    }
-                }else if(arr[start] + arr[end] < arr[i]){
+                }
+                if(end == i){
+                    end--;
+                    continue;
+                }
+
+                if(arr[start] + arr[end] > target){
+                    end--;
+                }else if(arr[start] + arr[end] < target){
                     start++;
                 }else{
-                    end--;
+                    cnt++;
+                    break; // 하나만 찾으면된다. 더 볼 필요 없음
                 }
             }
         }
