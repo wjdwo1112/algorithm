@@ -14,68 +14,54 @@ public class Solution {
         for(int t=1; t<=T; t++){
             int n = Integer.parseInt(bf.readLine());
             int[][] arr = new int[n][n];
+
             for(int i=0; i<n; i++){
                 st = new StringTokenizer(bf.readLine());
                 for(int j=0; j<n; j++){
                     arr[i][j] = Integer.parseInt(st.nextToken());
                 }
+            }
+
+            int[][] r90 = new int[n][n];
+            for(int i=0; i<n; i++){
+                for(int j=0; j<n; j++){
+                    r90[i][j] = arr[n-1-j][i];
+                }
 
             }
-            int[][] rotated90 = turn90(arr);
-            int[][] rotated180 = turn180(arr);
-            int[][] rotated270 = turn270(arr);
+
+            int[][] r180 = new int[n][n];
+            for(int i=0; i<n; i++) {
+                for (int j = 0; j < n; j++) {
+                    r180[i][j] = arr[n - 1 - i][n - 1 - j];
+                }
+            }
+
+            int[][] r270 = new int[n][n];
+            for(int i=0; i<n; i++){
+                for(int j=0; j<n; j++){
+                    r270[i][j] = arr[j][n-1-i];
+                }
+            }
 
             System.out.println("#" + t);
+
             for(int i=0; i<n; i++){
-
                 for(int j=0; j<n; j++){
-                    System.out.print(rotated90[i][j]);
+                    System.out.print(r90[i][j]);
+                }
+                System.out.print(" ");
+                for(int j=0; j<n; j++){
+                    System.out.print(r180[i][j]);
 
                 }
                 System.out.print(" ");
                 for(int j=0; j<n; j++){
-                    System.out.print(rotated180[i][j]);
+                    System.out.print(r270[i][j]);
                 }
-                System.out.print(" ");
-
-                for(int j=0; j<n; j++){
-                    System.out.print(rotated270[i][j]);
-                }
-
                 System.out.println();
             }
 
-
         }
-    }
-    public static int[][] turn90(int[][] arr){
-        int a = arr.length;
-        int [][] New = new int[a][a];
-        for(int i=0; i<a; i++){
-            for(int j=0; j< a; j++){
-                New[j][a-1-i] = arr[i][j];
-            }
-        }
-        return New;
-    }
-    public static int[][] turn180(int[][] arr){
-        int a = arr.length;
-        int [][] New = new int[a][a];
-        for(int i=0; i<a; i++){
-            for(int j=0; j<a; j++){
-                New[a-1-i][a-1-j] = arr[i][j];
-            }
-        }
-        return New;
-    }
-    public static int[][] turn270(int[][] arr){
-        int a = arr.length;
-        int [][] New = new int[a][a];
-        for(int i=0; i<a; i++){
-            for(int j=0; j<a; j++){
-                New[a-1-j][i] = arr[i][j];
-            }
-        }
-        return New;
     }
 }
